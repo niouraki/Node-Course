@@ -19,5 +19,12 @@ const p2 = new Promise((resolve) => {
 // we give it an array of promises
 // this returns a new promise that will be resolved when all the promises in the array are resolved
 // the result I get will be in an array
-Promise.all([p1, p2])
+// if I want to catch error I add the reject above and hehere when I run I get the error not the array
+// Promise.all([p1, p2])
+//   .then(result => console.log(result));
+
+// in case I want to wait until the first completed and then do something
+// as soon as one of the promises in this array is fulfilled the promise is considered fulfilled
+// in this case the result is not an array but the value of the first fulfilled promise
+Promise.race([p1, p2])
   .then(result => console.log(result));
